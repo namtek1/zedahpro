@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Zedah Property Solutions</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(270deg, navy, midnightblue, black);
+      background-size: 600% 600%;
+      animation: bgMove 15s ease infinite;
+      color: navajowhite;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: white;
+      position: relative;
+    }
+
+    .logo img {
+      height: 100px;
+      width: 100px;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      left: 20px;
+      top: 30px;
+      font-size: 28px;
+      color: gold;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .nav-arrow:hover {
+      transform: translateX(-5px);
+    }
+
+    main {
+      padding: 40px 60px;
+    }
+
+    /* Intro layout */
+    .intro-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    .intro-text {
+      flex: 1 1 55%;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .intro-images {
+      flex: 1 1 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .intro-images img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.4s ease;
+    }
+
+    .intro-images img:hover {
+      transform: scale(1.05);
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    /* Mission & Vision Layout */
+    .mission-vision-container {
+      display: flex;
+      gap: 30px;
+      align-items: stretch;
+      margin: 60px auto;
+      max-width: 1100px;
+    }
+
+    .mv-images {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mv-images img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .mv-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .statement-block {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      color: gold;
+    }
+
+    .statement-block h2 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    /* Innovators Section */
+    .innovators-section {
+      text-align: center;
+      margin: 60px auto 30px;
+    }
+
+    .innovators-section h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .carousel-container {
+      overflow: hidden;
+      width: 90%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 40px;
+      animation: scrollLeft 30s linear infinite;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .innovator {
+      flex: 0 0 auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      border-radius: 12px;
+      width: 180px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .innovator img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .innovator h4 {
+      color: gold;
+      margin: 10px 0 5px;
+    }
+
+    .innovator p {
+      margin: 0;
+      font-size: 14px;
+      color: navajowhite;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: black;
+      color: white;
+      position: relative;
+    }
+
+    .back-arrow {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 24px;
+      color: gold;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .back-arrow:hover {
+      transform: translateY(-5px);
+    }
+
+    @media screen and (max-width: 768px) {
+      main {
+        padding: 30px 20px;
+      }
+
+      .intro-container {
+        flex-direction: column;
+      }
+
+      .mission-vision-container {
+        flex-direction: column;
+      }
+
+      .mv-images {
+        flex-direction: row;
+      }
+
+      .carousel {
+        animation: none;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-arrow" onclick="goHome()" title="Back to homepage">&#8592; Previous</div>
+    <div class="logo"><img src="logo.png" alt="Zedah Logo"></div>
+  </header>
+
+  <main>
+    <!-- Intro Section -->
+    <section class="intro-container">
+      <div class="intro-text">
+        <p>
+          Zedah Property Solutions is a premier property services company committed to redefining the real estate and rental experience in Africa. We specialize in managing residential, commercial, and mixed-use properties for landlords, tenants, and property owners. Our goal is to simplify ownership while enhancing tenant satisfaction through smart, efficient, and transparent property solutions.
+        </p>
+        <p>
+         At Zedah, we believe in creating harmony between landlords and tenants by offering innovative services backed by technology and human touch. We address all aspects of property management to help our clients focus on what matters most. 
+        </p>
+        <p>Our key areas of focus include:</p>
+        <ul>
+          <li>Real Estate Sales and Rentals</li>
+          <li>Tenant Management and Support</li>
+          <li>Landlord and Owner Liaison Services</li>
+          <li>Property Maintenance and Surveillance</li>
+          <li>Digital Rent Collection and Reporting</li>
+          <li>Security and Smart Access Systems</li>
+        </ul>
+        <p>
+         Whether you are an individual landlord seeking hassle-free management, a property owner wanting to maximize returns, or a tenant in search of dignified living, Zedah is your trusted partner. Our operations are grounded in excellence, integrity, and a passion to improve housing across the continent. 
+        </p>
+      </div>
+      <div class="intro-images">
+        <img src="about1.jpg" alt="Property Image 1" height="350px">
+        <img src="about2.jpg" alt="Property Image 2" height="350px">
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision-container">
+      <div class="mv-images">
+        <img src="about3.jpg" alt="Mission Vision Image 1" height="355px">
+      </div>
+      <div class="mv-text">
+        <div class="statement-block">
+          <h2>Our Mission</h2>
+          <p>
+           To simplify property management for landlords and elevate the living experience for tenants by offering smart, reliable and compassionate solutions that are tailored in Integrity, Innovation and Trust. 
+          </p>
+        </div>
+        <div class="statement-block">
+          <h2>Our Vision</h2>
+          <p>
+           To become the most trusted and transformative property management partner in Africa, known for redefining housing standards through excellence, dignity and digital intelligence. 
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovators -->
+    <section class="innovators-section">
+      <h2>Meet Our Innovators</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <div class="innovator">
+            <img src="VZ.jpg" alt="Innovator 1">
+            <h4>Victor Zedah</h4>
+            <p>Founder & CEO</p>
+          </div>
+          <div class="innovator">
+            <img src="RM.jpeg" alt="Innovator 2">
+            <h4>Risper Mwangi</h4>
+            <p>Lead Developer</p>
+          </div>
+          <div class="innovator">
+            <img src="aw.png" alt="Innovator 3">
+            <h4>Amos William</h4>
+            <p>UI/UX Designer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 RATEK ZPS. All rights reserved.
+    <div class="back-arrow" onclick="goHome()" title="Go back to homepage">&#8592;</div>
+  </footer>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

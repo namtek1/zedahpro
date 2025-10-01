@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Landlord Upload</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(270deg, gold, #0b0c2a, white);
+      background-size: 600% 600%;
+      animation: gradientShift 12s ease infinite;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Navigation arrows */
+    .nav-arrow {
+      position: absolute;
+      top: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      text-decoration: none;
+      color: gold;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 12px;
+      border-radius: 50%;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-arrow:hover {
+      background: rgba(255, 215, 0, 0.8);
+      color: black;
+      transform: scale(1.1);
+    }
+
+    .left-arrow { left: 20px; }
+    .right-arrow { right: 20px; }
+
+    form {
+      background: black;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 300px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: gold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: gold;
+      color: black;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #e6c200;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation arrows -->
+  <a href="login.html" class="nav-arrow left-arrow">&#8592; Go back</a>
+  <a href="index.html" class="nav-arrow right-arrow">&#8594; Go Home</a>
+
+  <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <h2 style="color:white;">Upload Property</h2>
+
+    <label>County</label>
+    <select name="county" id="county" required onchange="updateLocations()">
+      <option value="">Select County</option>
+      <option value="Nairobi">Nairobi</option>
+      <option value="Kiambu">Kiambu</option>
+      <option value="Murang'a">Murang'a</option>
+      <option value="Kirinyaga">Kirinyaga</option>
+      <option value="Embu">Embu</option>
+      <option value="Tharaka Nithi">Tharaka Nithi</option>
+      <option value="Meru">Meru</option>
+    </select>
+
+    <label>Location</label>
+    <select name="location" id="location" required>
+      <option value="">Select Location</option>
+    </select>
+
+    <label>Premises Name</label>
+    <input type="text" name="premises_name" required>
+
+    <label>Type</label>
+    <select name="type" required>
+      <option>Apartment</option>
+      <option>Bedsitter</option>
+      <option>Bungalow</option>
+      <option>Villa</option>
+      <option>Office</option>
+      <option>1 Bedroom</option>
+      <option>2 Bedroom</option>
+      <option>Single Room</option>
+      <option>Self-contained</option>
+    </select>
+
+    <label>Number of Units</label>
+    <input type="number" name="units" required min="1">
+
+    <label>Monthly Price - Unit wise (KSh)</label>
+    <input type="number" name="price" required>
+
+    <label>Upload Images</label>
+    <input type="file" name="images[]" accept="image/*" multiple required>
+
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    const locationsByCounty = {
+      "Nairobi": ["Karen", "Westlands", "Kangemi"],
+      "Kiambu": ["Ruiru", "Thika", "Juja"],
+      "Murang'a": ["Kangema", "Murang'a Town"],
+      "Kirinyaga": ["Kutus", "Kerugoya", "Kamugunda", "Kagio", "Kagumo", "Mwea Ngurubani", "Mwea Kimbimbi"],
+      "Embu": ["Manyatta", "Kangaru", "Gakwegori", "Blue Valley", "Sunrise", "Spring Valley", "Muthatari", "Dallas", "Majengo", "Njukiri", "Embu Town CBD", "Mutunduri", "Runyenjes", "Kiritiri", "Ena", "Kianjokoma"],
+      "Tharaka Nithi": ["Chuka", "Chiakariga", "Katharaka"],
+      "Meru": ["Maua", "Nkubu", "Meru Town"],
+    };
+
+    function updateLocations() {
+      const county = document.getElementById("county").value;
+      const locationSelect = document.getElementById("location");
+      locationSelect.innerHTML = "<option value=''>Select Location</option>";
+      if (locationsByCounty[county]) {
+        locationsByCounty[county].forEach(loc => {
+          const opt = document.createElement("option");
+          opt.value = loc;
+          opt.textContent = loc;
+          locationSelect.appendChild(opt);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

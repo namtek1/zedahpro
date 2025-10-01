@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tenant Request Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #0a0a23, #111, #1a1a40, #0a0a23);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: gold;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header, footer {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-left, .nav-right {
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin-top: 120px;
+      font-size: 28px;
+    }
+
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 40px 0;
+      align-items: center;
+    }
+
+    .action-link {
+      background-color: #333;
+      padding: 1rem 2rem;
+      color: gold;
+      border: 2px solid gold;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      width: fit-content;
+      transition: background 0.3s;
+    }
+
+    .action-link:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    .dropdown {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 1rem;
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid gold;
+    }
+
+    .dropdown button {
+      background-color: black;
+      color: gold;
+      border: 1px solid gold;
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown button:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    footer {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="tenantlogin.html" class="nav-left">Back to login</a>
+    <div class="logo"><img src="logo.png" alt="Logo" height="50"></div>
+    <a href="tenantlogin.html" class="nav-right">Login</a>
+  </header>
+
+  <main>
+    <h1>Tenant Request Center</h1>
+
+    <div class="links-container">
+      <a href="tenantform.html" class="action-link">Fill Request Form</a>
+
+      <div>
+        <div class="action-link" onclick="toggleDropdown()">Make Request via Email</div>
+        <div class="dropdown" id="dropdown">
+          <button onclick="handleRequest('Electricity issue')">Electricity issue</button>
+          <button onclick="handleRequest('Blockage')">Blockage</button>
+          <button onclick="handleRequest('Security issue')">Security issue</button>
+          <button onclick="handleRequest('Monthly remit delay')">Monthly remit delay</button>
+          <button onclick="handleRequest('Vacating from premise')">Vacating from premise</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 RATEK ZPM. All Rights Reserved
+  </footer>
+
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById('dropdown');
+      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function handleRequest(issueType) {
+      const name = prompt("Enter your name:");
+      const phone = prompt("Enter your phone number:");
+      const location = prompt("Enter your premise location:");
+      const premiseName = prompt("Enter the name of the premise:");
+
+      if (!name || !phone || !location || !premiseName) {
+        alert("All fields are required.");
+        return;
+      }
+
+      const subject = encodeURIComponent(`Tenant Request: ${issueType}`);
+      const body = encodeURIComponent(`Hello,\n\nI am facing the following issue: ${issueType}.\n\nDetails:\nName: ${name}\nPhone: ${phone}\nLocation: ${location}\nPremise Name: ${premiseName}\n\nPlease address this at your earliest convenience.\n\nThank you.`);
+
+      // Replace with actual email addresses
+      const email1 = "zedahrealty@gmail.com";
+      const email2 = "horintechie@gmail.com";
+
+      const mailtoLink = `mailto:${email1},${email2}?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Zedah Property Solutions - Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0b0c2a; /* Dark navy */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: white;
+      position: relative;
+    }
+  
+   .logo img {
+      height: 100px;
+      width: 100px;
+    }
+  
+  /* Navigation Arrows */
+    .nav-arrows {
+      position: relative;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+    .nav-arrow {
+      position: absolute;
+      top: 0;
+      font-size: 19px;
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .nav-arrow:hover {
+      transform: scale(1.2);
+      color: #e5c100;
+    }
+    .nav-left {
+      left: 0;
+    }
+    .nav-right {
+      right: 0;
+    }
+
+  /* Video container */
+  .video-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease;
+    position: relative;
+    gap: 30px;
+    text-align: center;
+  }
+  video {
+    width: 80%;
+    max-width: 400px;
+    border: 5px solid gold;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255,215,0,0.5);
+  }
+
+  /* Pagination dots */
+  .pagination {
+    text-align: center;
+    margin: 15px 0;
+  }
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .dot.active, .dot:hover {
+    background-color: gold;
+  }
+
+  /* Footer */
+  footer {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    color: gold;
+    font-size: 14px;
+    border-top: 2px solid gold;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+</head>
+<body>
+
+  
+  <header>
+    <div class="logo"><img src="logo.png" alt="Zedah Logo"></div>
+  </header>
+
+  
+<!-- Navigation Arrows -->
+  <div class="nav-arrows">
+    <a href="index.html" class="nav-arrow nav-left">&#8592; Prev</a>
+    <a href="propertymarket.php" class="nav-arrow nav-right">Proceed to Explore Properties &#8594;</a>
+  </div>
+    
+    
+<!-- Video Section -->
+<div class="video-section">
+   <h3>Tenant Login</h3><br>
+  <video id="demoVideo" controls autoplay>
+    <source src="demo2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+  
+ <br><br><br> 
+<div class="video-section">
+  <h3>Property Owner<br> Signup and Login</h3><br>
+  <video id="demoVideo" controls autoplay>
+    <source src="demo3.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <br><br>
+  <h3>Property Owner<br> Postings</h3><br>
+  <video id="demoVideo" controls autoplay>
+    <source src="demo4.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+  <span class="dot active" data-index="0"></span>
+  <span class="dot" data-index="1"></span>
+  <span class="dot" data-index="2"></span>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 RATEK ZPS. All Rights Reserved
+</footer>
+
+<script>
+  // Demo videos array
+  const videos = ["demo2.mp4", "demo3.mp4", "demo4.mp4"];
+  let currentIndex = 0;
+  const videoElement = document.getElementById("demoVideo");
+  const dots = document.querySelectorAll(".dot");
+
+  // Change video by index
+  function showVideo(index) {
+    currentIndex = index;
+    videoElement.src = videos[currentIndex];
+    updateDots();
+  }
+
+  // Update pagination dots
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[currentIndex].classList.add("active");
+  }
+
+  // Navigation arrows
+  document.getElementById("prevPage").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    showVideo(currentIndex);
+  });
+  document.getElementById("nextPage").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % videos.length;
+    showVideo(currentIndex);
+  });
+
+  // Pagination dots click
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      showVideo(parseInt(dot.dataset.index));
+    });
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zedah Property Solutions</title>
+  <style>
+    /* Global Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('house15.jpg') repeat;
+      background-size: cover;
+      animation: moveBackground 30s linear infinite;
+      min-height: 100vh;
+      color: white;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: 0 0; }
+      100% { background-position: 0px 1000px; }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 50px;
+    }
+
+    .logo img {
+      height: 80px;
+      width: 80px;
+    }
+    
+    .nav-item {
+  position: relative; /* This ensures the dropdown is aligned under its parent */
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(6, 6, 74, 0.9);
+  min-width: 180px;
+  z-index: 999;
+}
+
+.nav-item:hover .dropdown {
+  display: block;
+}
+
+
+    nav {
+      display: flex;
+      gap: 30px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: gold;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      background-color: rgba(6, 6, 74, 0.9);
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      z-index: 999;
+    }
+
+    .dropdown a {
+      display: block;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    .nav-item:hover .dropdown {
+      display: block;
+    }
+
+    .main-title {
+      margin: 80px auto 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 2px 2px 4px black;
+      flex: 1;
+    }
+
+    /* NEW - Links Above Testimonial */
+    .above-testimonial-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 50px 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .above-testimonial-links a {
+      background-color: rgba(255, 215, 0, 0.85);
+      color: black;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .above-testimonial-links a:hover {
+      background-color: gold;
+      transform: translateY(-3px);
+    }
+
+    /* Testimonials */
+    .testimonial-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px 20px;
+      text-align: center;
+      color: gold;
+      margin-top: 40px;
+    }
+
+    .testimonial-carousel {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      max-width: 600px;
+      margin: 80px auto;
+    }
+
+    .testimonial {
+      flex: 0 0 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      position: absolute;
+      width: 100%;
+    }
+
+    .testimonial.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .testimonial p {
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    .testimonial h4 {
+      margin-top: 10px;
+      font-weight: normal;
+      color: #fff;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 9px;
+      color: white;
+      font-size: 14px;
+      position: relative;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .main-title {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .above-testimonial-links {
+        gap: 20px;
+      }
+
+      .above-testimonial-links a {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Zedah Logo">
+  </div>
+  <nav>
+    <div class="nav-item">
+      <a class="nav-link" href="about.html">About Us</a>
+    </div>
+    <div class="nav-item">
+      <span class="nav-link">Services</span>
+      <div class="dropdown">
+        <a href="payment_description.html">Rent Collection</a>
+        <a href="tenantmanagement.html">Tenant Management</a>
+        <a href="caretakersecurity.html">Caretaker and Security Management</a>
+        <a href="financial.html">Financial Reporting</a>
+        <a href="propertydescription.html">Property Sales and Property renting</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span class="nav-link">Property Sales</span>
+      <div class="dropdown">
+        <a href="#">Apartments</a>
+        <a href="#">Bungalows</a>
+        <a href="#">Maisonette</a>
+        <a href="#">One Bedroom</a>
+        <a href="#">Two Bedroom</a>
+        <a href="#">Three Bedroom</a>
+        <a href="#">Villas</a>
+        <a href="#">Offices</a>
+        <a href="#">Land</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span class="nav-link">Property Rent</span>
+      <div class="dropdown">
+        <a href="#">Apartments</a>
+        <a href="#">One Bedroom</a>
+        <a href="#">Two Bedroom</a>
+        <a href="#">Three Bedroom</a>
+        <a href="#">Villa</a>
+        <a href="#">Bungalow</a>
+        <a href="#">Bedsitter</a>
+        <a href="#">Offices</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span class="nav-link">Login</span>
+      <div class="dropdown">
+        <a href="ownerlogin.html">Proprietor</a>
+        <a href="landmain.html">Property Owner</a>
+        <a href="tenantlogin.html">Tenant</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span class="nav-link">Get in Touch</span>
+      <div class="dropdown">
+        <a href="#"><h6>Direct Call</h6><b>0713016115</b></a>
+        <a href="https://wa.me/254713016115"><h6><b>WhatsApp Us</b></h6></a>
+        <a href="mailto:zedahrealty@gmail.com"><h6><b>Email Us</b></h6></a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="main-title-container">
+  <div class="main-title">Zedah Property Solutions</div>
+</div>
+
+<!-- NEW Links Above Testimonial -->
+<div class="above-testimonial-links">
+  <a href="demo.html">View Demo -></a>
+  <a href="display_featured.php">Featured Sales and Rentals -></a>
+  <a href="propertymarket.php">Explore our Properties -></a>
+</div>
+
+<!-- Testimonial Section -->
+<section class="testimonial-section">
+  <h3>What Our Esteemed Clients Say:</h3>
+  <div class="testimonial-carousel" id="testimonial-carousel">
+    <div class="testimonial active">
+      <p>Zedah helped me find the perfect rental—fast and smooth!</p>
+      <h4>- Mary A., Kerugoya</h4>
+    </div>
+    <div class="testimonial">
+      <p>Their property management services are unmatched.</p>
+      <h4>- James Oduor., Mwea Ngurubani</h4>
+    </div>
+    <div class="testimonial">
+      <p>Professional, friendly and very responsive team.</p>
+      <h4>- Carol Morris., Kangaru</h4>
+    </div>
+    <div class="testimonial">
+      <p>I no longer need to move around to search for a residential place. Zedah got me well sorted.</p>
+      <h4>- Jessica N., Murang'a</h4>
+    </div>
+    <div class="testimonial">
+      <p>If I had to rate, excellent would be an underration to Zedah solutions.</p>
+      <h4>- John Mutuku., Embu</h4>
+    </div>
+    <div class="testimonial">
+      <p>Zedah solutions is fast, reliable and secure.</p>
+      <h4>- Abby N., Spring Valley</h4>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; <b>2025 RATEK ZPS. All rights reserved.</b></p>
+</footer>
+
+<!-- JavaScript to Rotate Testimonials -->
+<script>
+  const testimonials = document.querySelectorAll('.testimonial');
+  let index = 0;
+
+  setInterval(() => {
+    testimonials[index].classList.remove('active');
+    index = (index + 1) % testimonials.length;
+    testimonials[index].classList.add('active');
+  }, 4000);
+</script>
+
+</body>
+</html>

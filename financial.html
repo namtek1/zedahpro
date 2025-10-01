@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Financial Reporting</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background: url('finance.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    body.fade-in {
+      opacity: 1;
+    }
+
+    .logo {
+      text-align: center;
+      margin-top: 20px;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .logo img {
+      max-height: 70px;
+    }
+
+    .nav-arrow-top{
+      position: absolute;
+      right: 20px;
+      color: gold;
+      font-size: 30px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .nav-arrow-top:hover{
+      transform: scale(1.2);
+    }
+
+    .nav-arrow-top {
+      top: 20px;
+    }
+
+
+    .container {
+      margin: auto;
+      background-color: black;
+      border: 2px solid gold;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: block;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .container h1 {
+      color: gold;
+      margin-bottom: 20px;
+    }
+
+    .container p {
+      line-height: 1.6;
+      color: white;
+      font-size: 18px;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 15px;
+      background-color: #000;
+      color: white;
+      font-size: 14px;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    a.arrow-link {
+      text-decoration: none;
+      color: gold;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .navigate-link-container {
+      text-align: center;
+      margin-top: 20px;
+      animation: fadeUp 1.3s ease forwards;
+    }
+
+    .navigate-link {
+      display: inline-block;
+      padding: 12px 25px;
+      border: 2px solid gold;
+      color: gold;
+      background-color: transparent;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .navigate-link:hover {
+      background-color: gold;
+      color: #0b0c2a;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="logo.png" alt="Your Logo">
+  </div>
+
+  <!-- Top Arrow -->
+  <a href="index.html" class="arrow-link" onclick="navigateWithFade(event)">
+    <div class="nav-arrow-top">➤</div>
+  </a>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Financial Reporting</h1>
+    <p>
+      Financial reporting plays a crucial role in managing property-related finances, offering transparency and insight into income, expenses, and cash flow. Our system provides landlords, caretakers, and administrators with real-time financial summaries, payment tracking, and performance metrics to guide better decision-making and ensure accountability.
+    </p>
+    <p>
+      Through intuitive dashboards and automated logs, financial reporting systems allow for a streamlined process of recording rental payments, maintenance costs, utility bills, and other expenditures, helping users track profitability and meet compliance obligations.
+    </p>
+    <h3 style="color: gold; margin-top: 25px;">Key Functions:</h3>
+    <ul style="text-align: left; max-width: 650px; margin: auto; color: white; font-size: 17px;">
+      <li><strong>Rent Collection Logs:</strong> Automatically record and summarize rent payments from tenants.</li>
+      <li><strong>Expense Tracking:</strong> Log costs for repairs, maintenance, staffing, and utilities.</li>
+      <li><strong>Monthly Reports:</strong> Generate PDF or printable summaries for each property.</li>
+      <li><strong>Profit and Loss Statements:</strong> Visualize income vs. expenditure trends.</li>
+      <li><strong>Payment Reminders:</strong> Alert tenants of upcoming or overdue payments.</li>
+      <li><strong>Secure Access:</strong> Only authorized users (e.g., landlords or finance teams) can view reports.</li>
+      <li><strong>Export Options:</strong> Export data to Excel, CSV, or PDF for audits and sharing.</li>
+    </ul>
+    <p style="margin-top: 20px;">
+      Our financial reporting system ensures clarity, boosts accountability, and empowers smarter property management.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 RATEK ZPS. All rights reserved.
+  </footer>
+
+  <script>
+    // Fade-in effect on load
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add('fade-in');
+    });
+
+    // Fade-out effect on link click
+    function navigateWithFade(event) {
+      event.preventDefault();
+      const link = event.currentTarget.getAttribute('href');
+      document.body.classList.remove('fade-in');
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = link;
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>

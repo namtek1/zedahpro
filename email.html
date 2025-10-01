@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Message Landlord</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0b0c2a;
+      color: navajowhite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .nav-back {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 24px;
+      color: gold;
+      cursor: pointer;
+    }
+
+    .logo {
+      margin-top: 30px;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: gold;
+    }
+
+    .form-group {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: gold;
+      color: black;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-back" onclick="goBack()" title="Back to Sales">&#8592;</div>
+
+  <div class="logo">
+    <img src="logo.png" alt="Logo">
+  </div>
+
+  <h2>Message Landlord</h2>
+
+  <div class="form-group">
+    <input type="email" id="senderEmail" placeholder="Your Email (required)" required>
+    <button onclick="sendEmail()">Send</button>
+    <div class="message" id="statusMessage"></div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.location.href = "propertymarket.php";
+    }
+
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        location: params.get("location") || "N/A",
+        county: params.get("county") || "N/A",
+        type: params.get("type") || "N/A",
+        price: params.get("price") || "N/A",
+      };
+    }
+
+    function validateEmail(email) {
+      const regex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      return regex.test(email);
+    }
+
+    function sendEmail() {
+      const email = document.getElementById("senderEmail").value.trim();
+      const status = document.getElementById("statusMessage");
+
+      if (!email || !validateEmail(email)) {
+        status.style.color = "red";
+        status.textContent = "Please enter a valid email address.";
+        return;
+      }
+
+      const { title, location, county, type, price } = getQueryParams();
+      const subject = encodeURIComponent("Interest in Property Listing");
+      const body = encodeURIComponent(`Hello,
+
+I am interested in the following property:
+
+- Title: ${title}
+- Location: ${location}, ${county}
+- Type: ${type}
+- Price: KSh ${Number(price).toLocaleString()}
+
+Please contact me via email: ${email}
+
+Thank you,
+Zedah Property Website User`);
+
+      const to = ["nyabwariamos777@gmail.com", "zedahrealty@gmail.com"];
+      window.location.href = `mailto:${to.join(",")}?subject=${subject}&body=${body}`;
+
+      status.style.color = "lightgreen";
+      status.textContent = "Mail client opened. If not, ensure your email app is installed.";
+    }
+  </script>
+
+</body>
+</html>
+

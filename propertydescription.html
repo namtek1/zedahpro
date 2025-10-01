@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Property Sale and Marketing Info</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background: url('salemkt.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    body.fade-in {
+      opacity: 1;
+    }
+
+    .logo {
+      text-align: center;
+      margin-top: 20px;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .logo img {
+      max-height: 70px;
+    }
+
+    .nav-arrow-top, .nav-arrow-bottom {
+      position: absolute;
+      right: 20px;
+      color: gold;
+      font-size: 30px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .nav-arrow-top:hover, .nav-arrow-bottom:hover {
+      transform: scale(1.2);
+    }
+
+    .nav-arrow-top {
+      top: 20px;
+    }
+
+    .nav-arrow-bottom {
+      bottom: 70px;
+    }
+
+    .container {
+      margin: auto;
+      background-color: black;
+      border: 2px solid gold;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: block;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .container h1 {
+      color: gold;
+      margin-bottom: 20px;
+    }
+
+    .container p {
+      line-height: 1.6;
+      color: white;
+      font-size: 18px;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 15px;
+      background-color: #000;
+      color: white;
+      font-size: 14px;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    a.arrow-link {
+      text-decoration: none;
+      color: gold;
+    }
+
+    /* Keyframe animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+      
+    .navigate-link-container {
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeUp 1.3s ease forwards;
+}
+
+.navigate-link {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 2px solid gold;
+  color: gold;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navigate-link:hover {
+  background-color: gold;
+  color: #0b0c2a;
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="logo.png" alt="Your Logo" height="500px">
+  </div>
+
+  <!-- Top Right Arrow -->
+  <a href="index.html" class="arrow-link" onclick="navigateWithFade(event)">
+    <div class="nav-arrow-top">➤</div>
+  </a>
+
+  <!-- Main Description Container -->
+<div class="container">
+  <h1>Property Sale and Marketing</h1>
+  <p>
+    Property sale and marketing is a critical aspect of real estate that focuses on connecting sellers—such as landlords and property developers—with potential buyers or tenants. A well-structured property sale and marketing system ensures properties are listed attractively, promoted effectively, and sold or rented within the shortest time possible. It streamlines the process from listing to closing by integrating digital tools and user-friendly interfaces.
+  </p>
+  <p>
+    This platform enables landlords to showcase their properties with real images, detailed descriptions, and pricing, while giving buyers or renters the ability to browse, compare, and filter listings with ease. The ultimate goal is to simplify property transactions while maximizing visibility and reach.
+  </p>
+  <h3 style="color: gold; margin-top: 25px;">Key Functions:</h3>
+  <ul style="text-align: left; max-width: 650px; margin: auto; color: white; font-size: 17px;">
+    <li><strong>Property Upload Portal:</strong> Landlords can submit listings with images, location, price, and housing type details.</li>
+    <li><strong>Property Filtering:</strong> Buyers can search based on county, location, housing type, and price range.</li>
+    <li><strong>Real Image Display:</strong> Each listing supports authentic photo uploads to increase trust and transparency.</li>
+    <li><strong>Interactive Listings:</strong> Clickable property entries lead to contact pages or messaging interfaces for inquiries.</li>
+    <li><strong>Search Engine Optimization (SEO):</strong> Improves online visibility to attract a wider audience.</li>
+    <li><strong>Responsive Design:</strong> Ensures mobile and desktop users have seamless browsing experiences.</li>
+    <li><strong>Lead Management:</strong> Captures and manages buyer interest or inquiries through the platform.</li>
+    <li><strong>Marketing Integration:</strong> Supports promotions via social media and email marketing.</li>
+  </ul>
+  <p style="margin-top: 20px;">
+    This system enhances the buying and selling process, improves user engagement, and brings efficiency to modern property marketing strategies.
+  </p>
+</div>
+
+   
+  <!-- Add this right below the main description container -->
+    <div class="navigate-link-container">
+    <a href="propertymarket.php" class="navigate-link" onclick="navigateWithFade(event)">→ View Properties for Sale</a>
+    </div>
+
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 RATEK ZPM. All rights reserved.
+  </footer>
+
+  <script>
+    // Fade-in on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add('fade-in');
+    });
+
+    // Fade-out on link click
+    function navigateWithFade(event) {
+      event.preventDefault();
+      const link = event.currentTarget.getAttribute('href');
+      document.body.classList.remove('fade-in');
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = link;
+      }, 500); // match transition duration
+    }
+  </script>
+
+</body>
+</html>
+

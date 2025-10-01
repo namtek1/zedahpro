@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Interface</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #0a0a23; /* solid dark navy */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      overflow: hidden; /* hide particles overflow */
+    }
+
+    /* Particle circles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float linear infinite;
+    }
+
+    /* Floating effect */
+    @keyframes float {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0.3;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    /* Navigation Arrows */
+    .nav-arrow {
+      position: absolute;
+      top: 15px;
+      font-size: 19px;
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: transform 0.2s, color 0.2s;
+      z-index: 10;
+    }
+    .nav-arrow:hover {
+      transform: scale(1.2);
+      color: #f5d142;
+    }
+    .nav-left {
+      left: 15px;
+    }
+    .nav-right {
+      right: 15px;
+    }
+
+    .container {
+      width: 800px;
+      height: 500px;
+      display: flex;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      z-index: 5; /* above particles */
+      background: white;
+    }
+
+    .left {
+      background: #0d0d22;
+      color: gold;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .left h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .left p {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .left button {
+      padding: 10px 20px;
+      background: gold;
+      color: black;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .left button:hover {
+      background: #f5d142;
+    }
+
+    .right {
+      background: #fff;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .right input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .right .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+    
+    /* Styled Login Button */
+.right button.login {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, gold, #f5d142, goldenrod);
+  color: black;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.right button.login:hover {
+  background: linear-gradient(135deg, #f5d142, gold, #ffd700);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+}
+
+.right button.login:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+}
+
+   
+    .right .signup {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .right .signup button {
+      background: linear-gradient(to right, black, gold);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .right .signup button:hover {
+      opacity: 0.9;
+    }
+
+    .right .signup a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 10px #000;
+      border-radius: 12px;
+      text-align: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .popup.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Particles -->
+  <script>
+    const colors = ["white", "gold", "#0a0a23"];
+    for (let i = 0; i < 30; i++) {
+      let particle = document.createElement("div");
+      particle.classList.add("particle");
+      let size = Math.random() * 8 + 4; // 4px - 12px
+      particle.style.width = size + "px";
+      particle.style.height = size + "px";
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.animationDuration = (Math.random() * 10 + 8) + "s";
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(particle);
+    }
+  </script>
+
+  <!-- Navigation Arrows -->
+  <a href="index.html" class="nav-arrow nav-left">&#8592; Prev</a>
+  <a href="index.html" class="nav-arrow nav-right">Next &#8594;</a>
+
+  <div class="container">
+    <div class="left">
+      <div class="logo"><img src="logo.png" height="100px" width="100px"></div>
+      <h1>Hello, welcome!</h1>
+    </div>
+    <div class="right">
+      <form action="login.php" method="POST">
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <div class="actions">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+        <a href="forgotpass.html">Forgot password?</a>
+      </div>
+      <br>
+      <button type="submit" class="login">Login</button>
+    </form>
+      <div class="signup">
+        <p>Not a member yet?</p>
+        <button><a href="plans.html">Sign up</a></button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

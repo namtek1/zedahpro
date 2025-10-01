@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rent Premise Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #0a0a23, #111, #1a1a40, #0a0a23);
+      background-size: 400% 400%;
+      animation: animateBG 15s ease infinite;
+      font-family: Arial, sans-serif;
+      color: gold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    @keyframes animateBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .nav {
+      position: absolute;
+      top: 20px;
+      font-size: 24px;
+      color: gold;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-left {
+      left: 20px;
+    }
+
+    .nav-right {
+      right: 20px;
+    }
+
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 10px gold;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid gold;
+      border-radius: 5px;
+      background-color: #1a1a40;
+      color: gold;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      background-color: #1a1a40;
+      border: 1px solid gold;
+      border-radius: 5px;
+      color: gold;
+      padding: 10px;
+      resize: none;
+    }
+
+    .checkbox-group {
+      margin: 10px 0;
+    }
+
+    .submit-link {
+      display: inline-block;
+      background-color: black;
+      color: gold;
+      border: 1px solid gold;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .submit-link:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="tenantrequest.html" class="nav nav-left">&#8592;</a>
+  <a href="tenantlogin.html" class="nav nav-right">&#8594;</a>
+
+  <div class="form-container">
+    <h2>Premise Rental Request Form</h2>
+
+    <div class="form-group">
+      <label for="terms">Terms and Conditions</label>
+      <textarea readonly id="terms">
+1. Rent is due by the 5th of every month.
+2. Any property damage must be reported immediately.
+3. Subleasing is not allowed.
+4. Tenants must adhere to property rules and regulations.
+5. Premise access is subject to confirmation by landlord.
+      </textarea>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="agree" />
+      <label for="agree">I have read and agree to the terms and conditions</label>
+    </div>
+
+    <div id="contact-form" class="hidden">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" required />
+      </div>
+
+      <div class="form-group">
+        <label for="altPhone">Alternative Phone Number</label>
+        <input type="text" id="altPhone" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Working Email</label>
+        <input type="email" id="email" required />
+      </div>
+
+      <div class="submit-link" onclick="submitForm()">Submit</div>
+    </div>
+  </div>
+
+  <script>
+    const agreeCheckbox = document.getElementById('agree');
+    const formSection = document.getElementById('contact-form');
+
+    agreeCheckbox.addEventListener('change', () => {
+      formSection.classList.toggle('hidden', !agreeCheckbox.checked);
+    });
+
+    function submitForm() {
+      const fullName = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const altPhone = document.getElementById('altPhone').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!fullName || !phone || !altPhone || !email) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      const subject = encodeURIComponent("New Tenant Rental Request");
+      const body = encodeURIComponent(`Dear Management,\n\nA tenant has submitted a rental request:\n\nFull Name: ${fullName}\nPhone Number: ${phone}\nAlternative Phone: ${altPhone}\nEmail: ${email}\n\nPlease follow up accordingly.\n\nThank you.`);
+
+      const recipient1 = "zedahrealty@gmail.com";
+      const recipient2 = "horintechie@gmail.com";
+
+      const mailto = `mailto:${recipient1},${recipient2}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+
+      setTimeout(() => {
+        alert("Email sent successfully!");
+        window.location.href = "tenantrequest.html"; // Change this to your actual request page
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
+

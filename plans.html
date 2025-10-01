@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zedah Pricing Plans</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0A1A2F; /* Dark navy */
+      color: white;
+      padding: 20px;
+    }
+
+    /* Navigation Arrows */
+    .nav-arrows {
+      position: relative;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+    .nav-arrow {
+      position: absolute;
+      top: 0;
+      font-size: 19px;
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .nav-arrow:hover {
+      transform: scale(1.2);
+      color: #e5c100;
+    }
+    .nav-left {
+      left: 0;
+    }
+    .nav-right {
+      right: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: gold;
+      margin-bottom: 20px;
+    }
+    
+    h4 {
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .toggle-container {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .toggle-container label {
+      font-size: 18px;
+      margin: 0 10px;
+    }
+
+    .pricing-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .plan {
+      background-color: #111; /* Black */
+      border: 2px solid gold;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .most-popular {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: gold;
+      color: #0A1A2F;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .plan h2 {
+      color: gold;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 18px;
+      text-align: center;
+      margin: 10px 0;
+      color: #ccc;
+    }
+
+    .features {
+      margin: 20px 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    .features li {
+      margin: 10px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .features li::before {
+      content: '✔';
+      color: gold;
+      position: absolute;
+      left: 0;
+    }
+
+    .subscribe-btn {
+      background-color: gold;
+      color: #0A1A2F;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .subscribe-btn:hover {
+      background-color: #e5c100;
+    }
+
+    .faq-section {
+      max-width: 900px;
+      margin: 60px auto;
+    }
+
+    .faq-section h2 {
+      color: gold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .faq {
+      margin-bottom: 20px;
+    }
+
+    .faq p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .plan {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Arrows -->
+  <div class="nav-arrows">
+    <a href="index.html" class="nav-arrow nav-left">&#8592; Prev</a>
+    <a href="index.html" class="nav-arrow nav-right">Next &#8594;</a>
+  </div>
+
+  <h1>Zedah Pricing Plans</h1>
+  <h4>Yearly Plans Discounted</h4>
+
+  <div class="toggle-container">
+    <label for="billingToggle">Billing:</label>
+    <select id="billingToggle">
+      <option value="monthly">Monthly</option>
+      <option value="yearly">Yearly</option>
+    </select>
+  </div>
+
+  <div class="pricing-container">
+    <!-- Starter Plan -->
+    <div class="plan">
+      <h2>Starter</h2>
+      <div class="price" data-monthly="3000" data-yearly="30000">Monthly: KES 3,000</div>
+      <ul class="features">
+        <li>List 3 properties</li>
+        <li>Basic support</li>
+        <li>Email notifications</li>
+      </ul>
+      <a href="#" class="subscribe-btn">Subscribe</a>
+    </div>
+
+    <!-- Professional Plan -->
+    <div class="plan">
+      <div class="most-popular">Most Popular</div>
+      <h2>Professional</h2>
+      <div class="price" data-monthly="5000" data-yearly="55000">Monthly: KES 5,000</div>
+      <ul class="features">
+        <li>List up to 10 properties</li>
+        <li>Priority support</li>
+        <li>Email and SMS alerts</li>
+        <li>Dashboard access</li>
+      </ul>
+      <a href="#" class="subscribe-btn">Subscribe</a>
+    </div>
+
+    <!-- Enterprise Plan -->
+    <div class="plan">
+      <h2>Enterprise</h2>
+      <div class="price" data-monthly="7000" data-yearly="80000">Monthly: KES 7,000</div>
+      <ul class="features">
+        <li>Unlimited property listings</li>
+        <li>Dedicated account manager</li>
+        <li>Advanced analytics</li>
+        <li>Priority marketing</li>
+        <li>API integration</li>
+      </ul>
+      <a href="#" class="subscribe-btn">Subscribe</a>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <p><strong>Can I switch between monthly and yearly billing later?</strong></p>
+      <p>Yes, you can switch your billing cycle anytime from your account dashboard.</p>
+    </div>
+    <div class="faq">
+      <p><strong>Is there a free trial?</strong></p>
+      <p>We currently offer a 7-day trial for all new users.</p>
+    </div>
+    <div class="faq">
+      <p><strong>Can I cancel anytime?</strong></p>
+      <p>Yes, there are no long-term commitments. Cancel anytime.</p>
+    </div>
+  </div>
+
+  <script>
+    const billingToggle = document.getElementById('billingToggle');
+    const prices = document.querySelectorAll('.price');
+
+    function updateLinks() {
+      const mode = billingToggle.value;
+      prices.forEach(price => {
+        const planDiv = price.closest('.plan');
+        const planName = planDiv.querySelector('h2').textContent;
+        const link = planDiv.querySelector('.subscribe-btn');
+
+        // Use clean numeric values
+        const cost = (mode === 'monthly') 
+          ? price.dataset.monthly 
+          : price.dataset.yearly;
+
+        // Update link with plan details
+        link.href = `signup.html?plan=${encodeURIComponent(planName)}&billing=${mode}&price=${cost}`;
+      });
+    }
+
+    billingToggle.addEventListener('change', function () {
+      prices.forEach(price => {
+        price.textContent = (this.value === 'monthly') 
+          ? `Monthly: KES ${Number(price.dataset.monthly).toLocaleString()}`
+          : `Yearly: KES ${Number(price.dataset.yearly).toLocaleString()}`;
+      });
+      updateLinks();
+    });
+
+    // Initialize on load
+    prices.forEach(price => {
+      price.textContent = `Monthly: KES ${Number(price.dataset.monthly).toLocaleString()}`;
+    });
+    updateLinks();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(-45deg, #0a0a23, #000000, #1a1a40, #000000);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Navigation arrows */
+    .nav-arrows {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .nav-arrows a {
+      color: gold;
+      font-size: 2rem;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 8px 14px;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .nav-arrows a:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      text-align: center;
+      color: black;
+      margin-bottom: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .form-footer a {
+      color: #0a0a23;
+      text-decoration: none;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: black;
+      color: gold;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1b1b2f;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Arrows -->
+  <div class="nav-arrows">
+    <a href="signup.html">&#8592; Back</a>
+    <a href="index.html">&#8594; Home</a>
+  </div>
+
+  <div class="form-container">
+    <h2>Login</h2>
+    <form action="login.php" method="POST">
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <div class="actions">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+        <a href="forgotpass.html">Forgot password?</a>
+      </div>
+      <br>
+      <button type="submit">Login</button>
+    </form>
+    <div class="form-footer">
+      Not a member yet? <a href="plans.html">Sign up</a>
+    </div>
+  </div>
+
+</body>
+</html>

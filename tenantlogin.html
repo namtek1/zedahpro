@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tenant Login - Zedah Property Management</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      color: gold;
+      background: linear-gradient(-45deg, #0d1b2a, gold, white, #0d1b2a);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .arrow {
+      position: absolute;
+      font-size: 28px;
+      color: black;
+      cursor: pointer;
+      transition: transform 0.3s, color 0.3s;
+      font-weight: lighter;
+    }
+
+    .arrow:hover {
+      transform: translateY(-3px);
+      color: gold;
+    }
+
+    .left-arrow {
+      top: 20px;
+      left: 30px;
+    }
+
+    .right-arrow {
+      top: 20px;
+      right: 30px;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box, .dashboard {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px gold;
+      max-width: 400px;
+      width: 90%;
+      z-index: 1;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin-top: 20px;
+      background-color: gold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #f2c200;
+    }
+
+    .dashboard h2 {
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .link-box {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .link-box a {
+      background-color: black;
+      color: gold;
+      padding: 15px 25px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .link-box a:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 600px) {
+      .login-box, .dashboard {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Arrows -->
+  <div class="arrow right-arrow" onclick="goToPropertyMarket()" title="Go to Property Market">&#8594; Next</div>
+  <div class="arrow left-arrow" onclick="goToIndex()" title="Go to Homepage">&#8592; Previous</div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Login View -->
+    <div class="login-box" id="loginBox">
+      <h2>Tenant Login</h2>
+      <button onclick="loginAsTenant()">Login</button>
+    </div>
+
+    <!-- Dashboard View -->
+    <div class="dashboard" id="tenantDashboard" style="display: none;">
+      <h2>Welcome! Dear esteemed Tenant!<br> Proceed to:</h2>
+      <div class="link-box">
+        <a href="propertymarket.php">View Rental Properties</a>
+        <a href="tenantrequest.html">Make Requests</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 RATEK ZPS. All rights reserved.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function loginAsTenant() {
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('tenantDashboard').style.display = 'block';
+    }
+
+    function goToIndex() {
+      window.location.href = "index.html";
+    }
+
+    function goToPropertyMarket() {
+      window.location.href = "propertymarket.php";
+    }
+  </script>
+
+</body>
+</html>

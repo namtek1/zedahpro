@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rent Collection</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 40px;
+      overflow-x: hidden;
+      color: #FFFFFF;
+      position: relative;
+      height: 100vh;
+    }
+
+    /* Animated background image */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('rentcol.jpg'); 
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      opacity: 4;
+      animation: moveBg 60s linear infinite;
+    }
+
+    @keyframes moveBg {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(28, 42, 64, 0.9); /* Transparent dark navy */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      animation: fadeInContainer 1s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      color: #FFD700; /* Gold */
+      animation: slideDown 1s ease-in-out;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+      background-color: #0A1A2F;
+      padding: 20px;
+      border-left: 5px solid #FFD700;
+      margin-top: 30px;
+      border-radius: 5px;
+      animation: fadeInText 1.5s ease-in;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+      animation: fadeInButton 2s ease-in;
+    }
+
+    .btn {
+      background-color: #FFD700;
+      color: #000000;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fadeInContainer {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInButton {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>THANK YOU FOR CHOOSING US!</h1>
+
+    <p>
+      At Zedah Property Management, we are driven by a mission to simplify property management and elevate tenant experiences through innovation, integrity, and trust. Our secure and user-friendly payment process reflects our commitment to excellence and dignity—ensuring that every transaction is safe, seamless, and reliable. We envision a future where landlords and tenants across Africa can manage properties with confidence, supported by smart digital solutions tailored for peace of mind.
+    </p>
+
+    <div class="button-container">
+      <a href="index.html" class="btn">Back</a>
+    </div>
+  </div>
+
+</body>
+</html>
